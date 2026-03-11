@@ -52,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manrope.variable} ${inter.variable} antialiased`}>
-        <main>{children}</main>
+        {children}
       </body>
     </html>
   );
