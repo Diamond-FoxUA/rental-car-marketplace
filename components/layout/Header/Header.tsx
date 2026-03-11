@@ -9,7 +9,9 @@ export default function Header() {
 
   return (
     <header className="flex justify-between items-center px-[120px] bg-[var(--badges)]">
-      <Logo />
+      <Link href='/' aria-label='Go to homepage'>
+        <Logo />
+      </Link>
 
       <nav>
         <ul className="flex gap-[32px]">
@@ -30,7 +32,7 @@ export default function Header() {
               className={
                 pathname === '/catalog' ? 'text-[var(--button-hover)] py-[26px]' : 'text-[var(--main)] py-[26px]'
               }
-              aria-label='Go to Catalog'
+              aria-label='Go to catalog'
             >
               Catalog
             </Link>
