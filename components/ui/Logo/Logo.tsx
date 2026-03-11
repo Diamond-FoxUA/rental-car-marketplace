@@ -10,6 +10,7 @@ export default function Logo() {
                  duration-300
                  easy-in-out 
                  active:scale-95"
+      aria-label='Go to homepage'
     >
       <svg width={104} height={16}>
         <use href="/icons/logo.svg" />

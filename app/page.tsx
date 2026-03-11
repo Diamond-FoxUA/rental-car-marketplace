@@ -9,7 +9,7 @@ export default function Home() {
         <p className="text-[24px] font-semibold text-[var(--white)]">
           Reliable and budget-friendly rentals for any journey
         </p>
-        <ButtonLink className="mt-[24px]" href="/catalog" text="View Catalog" />
+        <ButtonLink className="mt-[24px]" href="/catalog" text="View Catalog" aria-label="Go to catalog"/>
       </div>
     </section>
   );
