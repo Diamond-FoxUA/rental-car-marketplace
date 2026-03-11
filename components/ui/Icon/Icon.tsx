@@ -6,7 +6,7 @@ interface IconProps {
 export default function Icon({ name, className }: IconProps) {
   return (
     <svg className={className}>
-      <use href={`icons/sprite.svg#icon-${name}`} />
+      <use href={`/icons/sprite.svg#icon-${name}`} />
     </svg>
   );
 }
