@@ -25,6 +25,8 @@ export default function ButtonLink({ className, href, text }: ButtonLinkProps) {
                   transition
                   duration-300
                   ease-in-out
+                  active:scale-95
+                  disabled:opacity-50
                   ${className}`}
     >
       {text}
