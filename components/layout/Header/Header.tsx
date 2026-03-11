@@ -19,6 +19,7 @@ export default function Header() {
               className={
                 pathname === '/' ? 'text-[var(--button-hover)] py-[26px]' : 'text-[var(--main)] py-[26px]'
               }
+              aria-label='Go to homepage'
             >
               Home
             </Link>
@@ -29,6 +30,7 @@ export default function Header() {
               className={
                 pathname === '/catalog' ? 'text-[var(--button-hover)] py-[26px]' : 'text-[var(--main)] py-[26px]'
               }
+              aria-label='Go to Catalog'
             >
               Catalog
             </Link>
