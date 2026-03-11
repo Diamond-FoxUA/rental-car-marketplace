@@ -1,4 +1,5 @@
 'use client';
+import Button from '@/components/ui/Button/Button';
 
 export default function Error({
   error,
@@ -8,10 +9,10 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <section>
-      <h1>Something went wrong.</h1>
+    <section className="min-h-[calc(100vh-68px)] flex flex-col gap-6 justify-center items-center">
+      <h1 className="text-[var(--main)]">Something went wrong.</h1>
       <p>An unexpected error occurred. Please, try again.</p>
-      <button onClick={() => reset}>Try again</button>
+      <Button text="Try again" handleClick={() => reset} />
     </section>
   );
 }
