@@ -37,7 +37,7 @@ export default function Filters({ brands }: { brands: string[] }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex justify-center items-center gap-[16px]"
+      className="flex justify-center items-center gap-[16px] mb-[56px]"
     >
       <div className="flex flex-col justify-start gap-[8px]">
         <label htmlFor="brand">Car brand</label>
