@@ -4,9 +4,11 @@ interface ButtonProps {
   handleClick: () => void;
 }
 
-export default function Button({ handleClick, text, classname }: ButtonProps) {
+export default function Button({ text, classname, handleClick }: ButtonProps) {
   return (
     <button
+      type="button"
+      onClick={handleClick}
       className={`flex
          justify-center
          items-center
@@ -25,7 +27,6 @@ export default function Button({ handleClick, text, classname }: ButtonProps) {
          active:scale-95
          disabled:opacity-50
          ${classname}`}
-      onClick={handleClick}
     >
       {text}
     </button>
