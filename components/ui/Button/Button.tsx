@@ -8,7 +8,7 @@ interface ButtonProps {
 
 export default function Button({
   text,
-  className,
+  className = '',
   onClick,
   type = 'button',
   disabled = false,
@@ -22,7 +22,6 @@ export default function Button({
         justify-center
         items-center
         w-full
-        max-w-[276px]
         h-[44px]
         text-base
         font-semibold
