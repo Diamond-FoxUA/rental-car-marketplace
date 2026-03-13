@@ -9,7 +9,7 @@ interface Props {
 
 export default function CarCard({ car }: Props) {
   return (
-    <li>
+    <li className='flex flex-col justify-between mb-[80px]'>
       <div>
         <Image width={276} height={268} src={car.img} alt={car.description} />
       </div>

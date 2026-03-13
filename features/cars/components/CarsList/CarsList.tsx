@@ -7,7 +7,7 @@ interface Props {
 
 export default function CarsList({ cars }: Props) {
   return (
-    <ul>
+    <ul className="grid grid-cols-4 gap-x-8 gap-y-12">
       {cars.map((car) => (
         <CarCard key={car.id} car={car} />
       ))}
