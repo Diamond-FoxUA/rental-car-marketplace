@@ -7,9 +7,29 @@ import { PRICE_OPTIONS } from '../../constants/prices';
 import Button from '@/components/ui/Button/Button';
 import Icon from '@/components/ui/Icon/Icon';
 
+function formatMileage(value: string) {
+  const numbers = value.replace(/\D/g, '');
+  return numbers.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function parseMileage(value: string | FormDataEntryValue | null) {
+  if (!value) return undefined;
+  return Number(value.toString().replace(/,/g, ''));
+}
+
 export default function Filters({ brands }: { brands: string[] }) {
   const setFilters = useCarsStore((state) => state.setFilters);
+
   const [price, setPrice] = useState('');
+  const [minMileage, setMinMileage] = useState('');
+  const [maxMileage, setMaxMileage] = useState('');
+
+  const handleMileageChange =
+    (setter: React.Dispatch<React.SetStateAction<string>>) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const formatted = formatMileage(e.target.value);
+      setter(formatted);
+    };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,8 +45,8 @@ export default function Filters({ brands }: { brands: string[] }) {
       brand: brandValue ? brandValue.toString() : undefined,
       rentalPrice:
         priceValue && priceValue !== '' ? priceValue.toString() : undefined,
-      minMileage: minMileageValue ? Number(minMileageValue) : undefined,
-      maxMileage: maxMileageValue ? Number(maxMileageValue) : undefined,
+      minMileage: parseMileage(minMileageValue),
+      maxMileage: parseMileage(maxMileageValue),
     };
 
     await setFilters(filters);
@@ -37,6 +57,7 @@ export default function Filters({ brands }: { brands: string[] }) {
       onSubmit={handleSubmit}
       className="flex justify-center items-center gap-[16px] mb-[56px]"
     >
+      {/* Brand */}
       <div className="flex flex-col gap-[8px]">
         <label htmlFor="brand">Car brand</label>
 
@@ -59,6 +80,7 @@ export default function Filters({ brands }: { brands: string[] }) {
         </div>
       </div>
 
+      {/* Price */}
       <div className="flex flex-col gap-[8px]">
         <label htmlFor="rentalPrice">Price / 1 hour</label>
 
@@ -90,6 +112,7 @@ export default function Filters({ brands }: { brands: string[] }) {
         </div>
       </div>
 
+      {/* Mileage */}
       <div className="flex flex-col gap-[8px]">
         <label>Car mileage / km</label>
 
@@ -99,9 +122,10 @@ export default function Filters({ brands }: { brands: string[] }) {
 
             <input
               name="minMileage"
-              type="number"
-              step="100"
-              min="0"
+              type="text"
+              inputMode="numeric"
+              value={minMileage}
+              onChange={handleMileageChange(setMinMileage)}
               className="rounded-l-xl border-r-0 text-left pl-[70px]"
             />
           </div>
@@ -111,9 +135,10 @@ export default function Filters({ brands }: { brands: string[] }) {
 
             <input
               name="maxMileage"
-              type="number"
-              step="100"
-              min="0"
+              type="text"
+              inputMode="numeric"
+              value={maxMileage}
+              onChange={handleMileageChange(setMaxMileage)}
               className="rounded-r-xl text-left pl-[50px]"
             />
           </div>
