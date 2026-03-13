@@ -1,37 +1,35 @@
 'use client';
 
-import { FormEvent } from 'react';
+import { useState } from 'react';
 import { useCarsStore } from '@/features/cars/store/useCarsStore';
-
 import { PRICE_OPTIONS } from '../../constants/prices';
+
 import Button from '@/components/ui/Button/Button';
 import Icon from '@/components/ui/Icon/Icon';
 
 export default function Filters({ brands }: { brands: string[] }) {
   const setFilters = useCarsStore((state) => state.setFilters);
+  const [price, setPrice] = useState('');
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
 
-    const brand = formData.get('brand')?.toString() || undefined;
-    const rentalPrice = formData.get('rentalPrice')?.toString() || undefined;
+    const brandValue = formData.get('brand');
+    const priceValue = formData.get('rentalPrice');
+    const minMileageValue = formData.get('minMileage');
+    const maxMileageValue = formData.get('maxMileage');
 
-    const minMileage = formData.get('minMileage')
-      ? Number(formData.get('minMileage'))
-      : undefined;
+    const filters = {
+      brand: brandValue ? brandValue.toString() : undefined,
+      rentalPrice:
+        priceValue && priceValue !== '' ? priceValue.toString() : undefined,
+      minMileage: minMileageValue ? Number(minMileageValue) : undefined,
+      maxMileage: maxMileageValue ? Number(maxMileageValue) : undefined,
+    };
 
-    const maxMileage = formData.get('maxMileage')
-      ? Number(formData.get('maxMileage'))
-      : undefined;
-
-    await setFilters({
-      brand,
-      rentalPrice,
-      minMileage,
-      maxMileage,
-    });
+    await setFilters(filters);
   };
 
   return (
@@ -65,7 +63,16 @@ export default function Filters({ brands }: { brands: string[] }) {
         <label htmlFor="rentalPrice">Price / 1 hour</label>
 
         <div className="relative">
-          <select name="rentalPrice" id="rentalPrice" className="peer">
+          {price && (
+            <span className="absolute top-[12px] left-[16px] z-20">To $</span>
+          )}
+
+          <select
+            name="rentalPrice"
+            id="rentalPrice"
+            className={`peer ${price ? 'pl-[48px]' : ''}`}
+            onChange={(e) => setPrice(e.target.value)}
+          >
             <option value="">Choose a price</option>
 
             {PRICE_OPTIONS.map((price) => (

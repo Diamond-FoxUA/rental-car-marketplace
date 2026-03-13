@@ -48,11 +48,15 @@ export const useCarsStore = create<CarsState>()((set, get) => ({
 
     set({ loading: true });
 
-    const data = await getCars({
-      ...filters,
-      page,
-      limit: 12,
-    });
+    const params = Object.fromEntries(
+      Object.entries({
+        ...filters,
+        page,
+        limit: 12,
+      }).filter(([, v]) => v !== undefined && v !== ''),
+    );
+
+    const data = await getCars(params);
 
     set({
       cars: data.cars,
@@ -68,11 +72,15 @@ export const useCarsStore = create<CarsState>()((set, get) => ({
 
     const nextPage = page + 1;
 
-    const data = await getCars({
-      ...filters,
-      page: nextPage,
-      limit: 12,
-    });
+    const params = Object.fromEntries(
+      Object.entries({
+        ...filters,
+        page: nextPage,
+        limit: 12,
+      }).filter(([, v]) => v !== undefined && v !== ''),
+    );
+
+    const data = await getCars(params);
 
     set({
       page: nextPage,
