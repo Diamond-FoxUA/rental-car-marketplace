@@ -70,7 +70,7 @@ export default function Filters({ brands }: { brands: string[] }) {
           <select
             name="rentalPrice"
             id="rentalPrice"
-            className={`peer ${price ? 'pl-[48px]' : ''}`}
+            className={`peer ${price ? 'pl-[47px]' : ''}`}
             onChange={(e) => setPrice(e.target.value)}
           >
             <option value="">Choose a price</option>
