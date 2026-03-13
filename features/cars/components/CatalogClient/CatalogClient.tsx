@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+
 import { useCarsStore } from '@/features/cars/store/useCarsStore';
 import { getBrands } from '@/features/cars/api/getBrands';
 
@@ -38,7 +40,7 @@ export default function CatalogClient() {
 
         <CarsList cars={cars} />
 
-        {page < totalPages && (
+        {page < totalPages ? (
           <Button
             text={loading ? 'Loading...' : 'Load more'}
             type="button"
@@ -46,6 +48,10 @@ export default function CatalogClient() {
             onClick={loadMore}
             className="max-w-[156px] mx-auto mb-[124px]"
           />
+        ) : (
+          <div className="flex flex-col gap-4 justify-self-center mx-auto mb-[124px]">
+            <p className="">You&apos;ve reached the end.</p>
+          </div>
         )}
       </div>
     </section>
