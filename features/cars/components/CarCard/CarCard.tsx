@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Car } from '../../types/car';
 
+import { useCarsStore } from '../../store/useCarsStore';
+import { Car } from '../../types/car';
 import ButtonLink from '@/components/ui/ButtonLink/ButtonLink';
+import Icon from '@/components/ui/Icon/Icon';
 
 interface Props {
   car: Car;
@@ -12,15 +14,30 @@ export default function CarCard({ car }: Props) {
   const [, city, country] = car.address.split(', ');
   const formattedMileage = car.mileage.toLocaleString('uk-UA');
 
+  const { favourites, toggleFavourite } = useCarsStore();
+  const isFavourite = favourites.includes(car.id);
+
   return (
-    <li className="flex flex-col justify-between mb-[80px]">
-      <div>
+    <li className="relative flex flex-col justify-between mb-[80px]">
+      <div className="hover:scale-102 transition duration-300 ease-in-out">
+        <button
+          onClick={() => toggleFavourite(car.id)}
+          className="absolute top-[16px] right-[16px] text-xl hover:scale-110 transition duration-300 ease-in-out"
+          type="button"
+        >
+          {isFavourite ? (
+            <Icon name="favourite-active" size="16" fill={`var(--button)`} />
+          ) : (
+            <Icon name="favourite-default" size="16" fill={`var(--white)`} />
+          )}
+        </button>
+
         <Link
           className="cursor-pointer hover:scale-102"
           href={`/catalog/${car.id}`}
         >
           <Image
-            className="rounded-[14px] h-[268px] object-cover mb-[16px] hover:scale-102 transition duration-300 ease-in-out"
+            className="rounded-[14px] h-[268px] object-cover mb-[16px]"
             width={276}
             height={268}
             src={car.img}
