@@ -33,6 +33,18 @@ export default function CatalogClient() {
     fetchBrands();
   }, []);
 
+  const [showEndMessage, setShowEndMessage] = useState(false);
+
+  useEffect(() => {
+    if (!loading && page === totalPages) {
+      const timer = setTimeout(() => {
+        setShowEndMessage(true);
+      }, 1);
+
+      return () => clearTimeout(timer);
+    }
+  }, [loading, page, totalPages]);
+
   return (
     <section className="pt-[64px] min-h-[calc(100vh-68px)]">
       <div className="px-[120px]">
@@ -40,7 +52,9 @@ export default function CatalogClient() {
 
         <CarsList cars={cars} />
 
-        {page < totalPages ? (
+        {loading && <p>Loading...</p>}
+
+        {page < totalPages && (
           <Button
             text={loading ? 'Loading...' : 'Load more'}
             type="button"
@@ -48,7 +62,9 @@ export default function CatalogClient() {
             onClick={loadMore}
             className="max-w-[156px] mx-auto mb-[124px]"
           />
-        ) : (
+        )}
+
+        {showEndMessage && (
           <div className="flex flex-col gap-4 justify-self-center mx-auto mb-[124px]">
             <p className="">You&apos;ve reached the end.</p>
           </div>
