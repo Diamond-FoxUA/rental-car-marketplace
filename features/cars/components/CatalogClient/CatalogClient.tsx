@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 
 import { useCarsStore } from '@/features/cars/store/useCarsStore';
 import { getBrands } from '@/features/cars/api/getBrands';
@@ -9,6 +8,7 @@ import { getBrands } from '@/features/cars/api/getBrands';
 import Filters from '../Filters/Filters';
 import CarsList from '../CarsList/CarsList';
 import Button from '@/components/ui/Button/Button';
+import Loader from '@/components/ui/Loader/Loader';
 
 export default function CatalogClient() {
   const { cars, fetchCars, loadMore, page, totalPages, loading, reset } =
@@ -33,26 +33,14 @@ export default function CatalogClient() {
     fetchBrands();
   }, []);
 
-  const [showEndMessage, setShowEndMessage] = useState(false);
-
-  useEffect(() => {
-    if (!loading && page === totalPages) {
-      const timer = setTimeout(() => {
-        setShowEndMessage(true);
-      }, 1);
-
-      return () => clearTimeout(timer);
-    }
-  }, [loading, page, totalPages]);
-
   return (
     <section className="pt-[64px] min-h-[calc(100vh-68px)]">
       <div className="px-[120px]">
         {brands.length > 0 && <Filters brands={brands} />}
 
-        <CarsList cars={cars} />
+        {loading && <Loader />}
 
-        {loading && <p>Loading...</p>}
+        <CarsList cars={cars} />
 
         {page < totalPages && (
           <Button
@@ -64,7 +52,7 @@ export default function CatalogClient() {
           />
         )}
 
-        {showEndMessage && (
+        {!loading && cars.length > 0 && page === totalPages && (
           <div className="flex flex-col gap-4 justify-self-center mx-auto mb-[124px]">
             <p className="">You&apos;ve reached the end.</p>
           </div>
