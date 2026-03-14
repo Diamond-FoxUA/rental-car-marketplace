@@ -11,7 +11,8 @@ import CarInfo from '../CarInfo/CarInfo';
 
 export default function CarPageClient() {
   const { id } = useParams<{ id: string }>();
-  const { car, loading, error, fetchCarDetails, clearCar } = useCarDetailsStore();
+  const { car, loading, error, fetchCarDetails, clearCar } =
+    useCarDetailsStore();
 
   useEffect(() => {
     if (!id) return;
@@ -39,16 +40,6 @@ export default function CarPageClient() {
       )}
 
       {car && <CarInfo car={car} />}
-      {/* {!loading && !car && (
-        <div className="min-h-[calc(100vh-68px)] flex flex-col gap-6 justify-center items-center">
-          <h1 className="text-[var(--main)]">No car found</h1>
-          <ButtonLink
-            className="!max-w-[200px]"
-            href="/catalog"
-            text="Return to the catalog"
-          />
-        </div>
-      )} */}
     </section>
   );
 }

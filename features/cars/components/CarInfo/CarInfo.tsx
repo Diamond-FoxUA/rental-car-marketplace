@@ -33,7 +33,6 @@ export default function CarInfo({ car }: Props) {
           onLoad={() => setImageLoading(false)}
         ></Image>
         <BookForm />
-        {/* <div className="w-[640px] h-[488px] bg-[var(--main)]"></div> */}
       </div>
 
       <CarDetails car={car} />
