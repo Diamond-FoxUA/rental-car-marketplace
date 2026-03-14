@@ -64,7 +64,6 @@ export default function Filters({ brands }: { brands: string[] }) {
 
         <div className="relative">
           <Select name="brand" options={brands} placeholder="Choose a brand" />
-          
         </div>
       </div>
 
@@ -82,12 +81,6 @@ export default function Filters({ brands }: { brands: string[] }) {
             options={PRICE_OPTIONS}
             placeholder="Choose a price"
             onChange={(value) => setPrice(value)}
-          />
-
-          <Icon
-            className="pointer-events-none absolute top-[15px] right-[14px] transition duration-300 peer-focus:rotate-180"
-            name="arrow-default"
-            size="16"
           />
         </div>
       </div>
