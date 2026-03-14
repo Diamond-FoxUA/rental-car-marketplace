@@ -47,7 +47,7 @@ export default function CatalogClient() {
       <div className="px-[120px]">
         {brands.length > 0 && <Filters brands={brands} />}
 
-        {loading ? <Loader /> : <CarsList cars={cars} />}
+        {!hasFetched && loading ? <Loader /> : <CarsList cars={cars} />}
 
         {page < totalPages && (
           <Button
@@ -55,7 +55,7 @@ export default function CatalogClient() {
             type="button"
             disabled={loading}
             onClick={loadMore}
-            className="max-w-[156px] mx-auto mb-[124px]"
+            className="!text-[var(--main)] max-w-[156px] bg-transparent border border-[var(--button)] hover:border-[var(--button-hover)] hover:bg-transparent mx-auto mb-[124px]"
           />
         )}
 
