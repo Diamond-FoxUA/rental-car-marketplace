@@ -86,7 +86,7 @@ export default function BookForm() {
           name="comment"
           id="comment"
           placeholder="Comment"
-          className="!text-[var(--gray)] text-left w-full max-w-full h-[88px] py-[14px] px-[20px] bg-[var(--inputs)] border border-transparent rounded-[12px] placeholder:text-[var(--gray)] resize-none"
+          className="!text-[var(--gray)] font-[500] text-left w-full max-w-full h-[88px] py-[14px] px-[20px] bg-[var(--inputs)] border border-transparent rounded-[12px] placeholder:text-[var(--gray)] resize-none"
         ></textarea>
 
         <Button
