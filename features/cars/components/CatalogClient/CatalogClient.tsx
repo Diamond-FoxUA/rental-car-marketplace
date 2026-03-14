@@ -11,8 +11,17 @@ import Button from '@/components/ui/Button/Button';
 import Loader from '@/components/ui/Loader/Loader';
 
 export default function CatalogClient() {
-  const { cars, fetchCars, loadMore, page, totalPages, loading, reset } =
-    useCarsStore();
+  const {
+    cars,
+    fetchCars,
+    loadMore,
+    page,
+    totalPages,
+    loading,
+    error,
+    hasFetched,
+    reset,
+  } = useCarsStore();
 
   const [brands, setBrands] = useState<string[]>([]);
 
@@ -38,9 +47,7 @@ export default function CatalogClient() {
       <div className="px-[120px]">
         {brands.length > 0 && <Filters brands={brands} />}
 
-        {loading && <Loader />}
-
-        <CarsList cars={cars} />
+        {loading ? <Loader /> : <CarsList cars={cars} />}
 
         {page < totalPages && (
           <Button
@@ -56,6 +63,17 @@ export default function CatalogClient() {
           <div className="flex flex-col gap-4 justify-self-center mx-auto mb-[124px]">
             <p className="">You&apos;ve reached the end.</p>
           </div>
+        )}
+
+        {error && (
+          <div className="min-h-[calc(100vh-68px)] flex flex-col gap-6 justify-center items-center">
+            <h1 className="text-[var(--main)]">{error}</h1>
+            <Button text="Try again" type="button" onClick={fetchCars} />
+          </div>
+        )}
+
+        {hasFetched && !loading && !error && cars.length === 0 && (
+          <p className="text-center mt-[30vh]">No cars found</p>
         )}
       </div>
     </section>

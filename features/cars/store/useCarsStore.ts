@@ -19,6 +19,8 @@ interface CarsStore {
   page: number;
   totalPages: number;
   loading: boolean;
+  error: string | null;
+  hasFetched: boolean;
 
   reset: () => void;
   setFilters: (filters: Filters) => Promise<void>;
@@ -43,6 +45,8 @@ export const useCarsStore = create<CarsStore>()(
       page: 1,
       totalPages: 1,
       loading: false,
+      error: null,
+      hasFetched: false,
 
       reset: () =>
         set({
@@ -61,23 +65,32 @@ export const useCarsStore = create<CarsStore>()(
       fetchCars: async () => {
         const { filters, page } = get();
 
-        set({ loading: true });
+        try {
+          set({ loading: true, error: null });
 
-        const params = Object.fromEntries(
-          Object.entries({
-            ...filters,
-            page,
-            limit: 12,
-          }).filter(([, v]) => v !== undefined && v !== ''),
-        );
+          const params = Object.fromEntries(
+            Object.entries({
+              ...filters,
+              page,
+              limit: 12,
+            }).filter(([, v]) => v !== undefined && v !== ''),
+          );
 
-        const data = await getCars(params);
+          const data = await getCars(params);
 
-        set({
-          cars: data.cars,
-          totalPages: data.totalPages,
-          loading: false,
-        });
+          set({
+            cars: data.cars,
+            totalPages: data.totalPages,
+            loading: false,
+            hasFetched: true,
+          });
+        } catch (error) {
+          set({
+            error: 'Failed to load cars',
+            loading: false,
+            hasFetched: true,
+          });
+        }
       },
 
       loadMore: async () => {
@@ -85,22 +98,32 @@ export const useCarsStore = create<CarsStore>()(
 
         if (page >= totalPages) return;
 
-        const nextPage = page + 1;
+        try {
+          set({ loading: true, error: null });
 
-        const params = Object.fromEntries(
-          Object.entries({
-            ...filters,
+          const nextPage = page + 1;
+
+          const params = Object.fromEntries(
+            Object.entries({
+              ...filters,
+              page: nextPage,
+              limit: 12,
+            }).filter(([, v]) => v !== undefined && v !== ''),
+          );
+
+          const data = await getCars(params);
+
+          set({
             page: nextPage,
-            limit: 12,
-          }).filter(([, v]) => v !== undefined && v !== ''),
-        );
-
-        const data = await getCars(params);
-
-        set({
-          page: nextPage,
-          cars: [...cars, ...data.cars],
-        });
+            cars: [...cars, ...data.cars],
+            loading: false,
+          });
+        } catch (error) {
+          set({
+            error: 'Failed to load more cars',
+            loading: false,
+          });
+        }
       },
     }),
     {
