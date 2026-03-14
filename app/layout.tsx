@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Manrope, Inter } from 'next/font/google';
+
 import './globals.css';
+import { Toaster } from 'sonner';
+
 import Header from '@/components/layout/Header/Header';
 
 const manrope = Manrope({
@@ -57,6 +60,8 @@ export default function RootLayout({
       >
         <Header />
         <main className="flex-1 h-full">{children}</main>
+
+        <Toaster position='top-right' richColors />
       </body>
     </html>
   );

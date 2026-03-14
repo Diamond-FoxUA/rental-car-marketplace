@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { toast } from 'sonner';
 import Button from '@/components/ui/Button/Button';
 
 export default function BookForm() {
@@ -34,7 +35,7 @@ export default function BookForm() {
 
     setError('');
 
-    alert('Car booked successfully!');
+    toast.success('Car booked successfully!');
     setForm({
       name: '',
       email: '',
@@ -52,9 +53,7 @@ export default function BookForm() {
         </p>
       </div>
 
-      {error && (
-        <p className='text-[#FF5733] font-[500]'>{error}</p>
-      )}
+      {error && <p className="text-[#FF5733] font-[500]">{error}</p>}
 
       <form className="flex flex-col gap-[16px]" onSubmit={handleSubmit}>
         <input
