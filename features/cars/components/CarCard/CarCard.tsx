@@ -47,9 +47,9 @@ export default function CarCard({ car }: Props) {
       </div>
       <div className="flex justify-between items-center">
         <h2 className="text-[16px] font-[500] leading-[125%]">
-          {car.brand} {car.model} {car.year}
+          {car.brand} <span className='text-[var(--button)]'>{car.model}</span> {car.year}
         </h2>
-        <p className="text-[var(--main)] mr-[11px]">${car.rentalPrice}</p>
+        <p className="text-[var(--main)] font-[500] mr-[11px]">${car.rentalPrice}</p>
       </div>
       <div className="mb-[28px]">
         <ul>
