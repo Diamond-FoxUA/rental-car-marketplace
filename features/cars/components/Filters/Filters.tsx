@@ -6,6 +6,7 @@ import { PRICE_OPTIONS } from '../../constants/prices';
 
 import Button from '@/components/ui/Button/Button';
 import Icon from '@/components/ui/Icon/Icon';
+import Select from '@/components/ui/Select/Select';
 
 function formatMileage(value: string) {
   const numbers = value.replace(/\D/g, '');
@@ -62,21 +63,8 @@ export default function Filters({ brands }: { brands: string[] }) {
         <label htmlFor="brand">Car brand</label>
 
         <div className="relative">
-          <select name="brand" id="brand" className="peer">
-            <option value="">Choose a brand</option>
-
-            {brands.map((brand) => (
-              <option key={brand} value={brand}>
-                {brand}
-              </option>
-            ))}
-          </select>
-
-          <Icon
-            className="pointer-events-none absolute top-[15px] right-[14px] transition duration-300 peer-focus:rotate-180"
-            name="arrow-default"
-            size="16"
-          />
+          <Select name="brand" options={brands} placeholder="Choose a brand" />
+          
         </div>
       </div>
 
@@ -89,20 +77,12 @@ export default function Filters({ brands }: { brands: string[] }) {
             <span className="absolute top-[12px] left-[16px] z-20">To $</span>
           )}
 
-          <select
+          <Select
             name="rentalPrice"
-            id="rentalPrice"
-            className={`peer ${price ? 'pl-[47px]' : ''}`}
-            onChange={(e) => setPrice(e.target.value)}
-          >
-            <option value="">Choose a price</option>
-
-            {PRICE_OPTIONS.map((price) => (
-              <option key={price} value={price}>
-                {price}
-              </option>
-            ))}
-          </select>
+            options={PRICE_OPTIONS}
+            placeholder="Choose a price"
+            onChange={(value) => setPrice(value)}
+          />
 
           <Icon
             className="pointer-events-none absolute top-[15px] right-[14px] transition duration-300 peer-focus:rotate-180"

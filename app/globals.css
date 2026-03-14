@@ -79,11 +79,10 @@
 
     background-color: var(--inputs);
 
-
     padding: 12px 16px;
     appearance: none;
   }
-  
+
   select {
     appearance: none;
     position: relative;
@@ -109,5 +108,22 @@
 
   input[type='number'] {
     -moz-appearance: textfield;
+  }
+
+  /* scrollbar */
+  .dropdown::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .dropdown::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .dropdown::-webkit-scrollbar-thumb {
+    background: var(--gray-light);
+    border-radius: 8px;
+
+    border-right: 8px solid transparent;
+    background-clip: padding-box;
   }
 }

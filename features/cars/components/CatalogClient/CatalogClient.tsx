@@ -73,7 +73,7 @@ export default function CatalogClient() {
         )}
 
         {hasFetched && !loading && !error && cars.length === 0 && (
-          <p className="text-center mt-[30vh]">No cars found</p>
+          <p className="text-center mt-[25vh]">No cars found.</p>
         )}
       </div>
     </section>
