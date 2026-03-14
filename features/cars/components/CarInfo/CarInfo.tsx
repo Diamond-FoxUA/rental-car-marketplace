@@ -6,6 +6,7 @@ interface Props {
 }
 
 import CarDetails from '../CarDetails/CarDetails';
+import BookForm from '../BookForm/BookForm';
 
 export default function CarInfo({ car }: Props) {
   return (
@@ -18,11 +19,11 @@ export default function CarInfo({ car }: Props) {
           width={640}
           height={512}
         ></Image>
-        <div className="w-[640px] h-[488px] bg-[var(--main)]"></div>
+        <BookForm />
+        {/* <div className="w-[640px] h-[488px] bg-[var(--main)]"></div> */}
       </div>
 
       <CarDetails car={car} />
-      {/* lg:row-span-2 h-fit */}
     </div>
   );
 }
