@@ -11,13 +11,17 @@ import CarInfo from '../CarInfo/CarInfo';
 
 export default function CarPageClient() {
   const { id } = useParams<{ id: string }>();
-  const { car, loading, error, fetchCarDetails } = useCarDetailsStore();
+  const { car, loading, error, fetchCarDetails, clearCar } = useCarDetailsStore();
 
   useEffect(() => {
     if (!id) return;
 
     fetchCarDetails(id);
-  }, [id, fetchCarDetails]);
+
+    return () => {
+      clearCar();
+    };
+  }, [id, fetchCarDetails, clearCar]);
 
   return (
     <section>

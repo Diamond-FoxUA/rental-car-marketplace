@@ -8,6 +8,7 @@ interface CarDetailsStore {
   loading: boolean;
   error: string | null;
   fetchCarDetails: (id: string) => Promise<void>;
+  clearCar: () => void;
 }
 
 export const useCarDetailsStore = create<CarDetailsStore>((set) => ({
@@ -25,5 +26,13 @@ export const useCarDetailsStore = create<CarDetailsStore>((set) => ({
     } catch (error) {
       set({ error: 'Failed to load car', loading: false });
     }
+  },
+
+  clearCar: () => {
+    set({
+      car: null,
+      loading: false,
+      error: null,
+    });
   },
 }));
