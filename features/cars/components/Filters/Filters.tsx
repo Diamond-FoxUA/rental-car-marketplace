@@ -5,7 +5,6 @@ import { useCarsStore } from '@/features/cars/store/useCarsStore';
 import { PRICE_OPTIONS } from '../../constants/prices';
 
 import Button from '@/components/ui/Button/Button';
-import Icon from '@/components/ui/Icon/Icon';
 import Select from '@/components/ui/Select/Select';
 
 function formatMileage(value: string) {
@@ -21,6 +20,7 @@ function parseMileage(value: string | FormDataEntryValue | null) {
 export default function Filters({ brands }: { brands: string[] }) {
   const setFilters = useCarsStore((state) => state.setFilters);
 
+  const [brand, setBrand] = useState('');
   const [price, setPrice] = useState('');
   const [minMileage, setMinMileage] = useState('');
   const [maxMileage, setMaxMileage] = useState('');
@@ -53,6 +53,20 @@ export default function Filters({ brands }: { brands: string[] }) {
     await setFilters(filters);
   };
 
+  const handleReset = () => {
+    setBrand('');
+    setPrice('');
+    setMinMileage('');
+    setMaxMileage('');
+
+    setFilters({
+      brand: undefined,
+      rentalPrice: undefined,
+      minMileage: undefined,
+      maxMileage: undefined,
+    });
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -63,7 +77,13 @@ export default function Filters({ brands }: { brands: string[] }) {
         <label htmlFor="brand">Car brand</label>
 
         <div className="relative">
-          <Select name="brand" options={brands} placeholder="Choose a brand" />
+          <Select
+            name="brand"
+            options={brands}
+            placeholder="Choose a brand"
+            value={brand}
+            onChange={(value) => setBrand(value)}
+          />
         </div>
       </div>
 
@@ -80,6 +100,7 @@ export default function Filters({ brands }: { brands: string[] }) {
             name="rentalPrice"
             options={PRICE_OPTIONS}
             placeholder="Choose a price"
+            value={price}
             onChange={(value) => setPrice(value)}
           />
         </div>
@@ -118,7 +139,15 @@ export default function Filters({ brands }: { brands: string[] }) {
         </div>
       </div>
 
-      <Button type="submit" text="Search" className="max-w-[156px] self-end" />
+      <div className="flex self-end w-[312px] gap-[10px]">
+        <Button type="submit" text="Search" className="max-w-[156px]" />
+        <Button
+          type="button"
+          text="Reset"
+          onClick={handleReset}
+          className="!text-[var(--main)] max-w-[156px] bg-transparent border border-[var(--button)] hover:border-[var(--button-hover)] hover:bg-transparent"
+        />
+      </div>
     </form>
   );
 }

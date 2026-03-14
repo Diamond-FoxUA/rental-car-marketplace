@@ -20,12 +20,11 @@ export default function Select({
   onChange,
 }: Props) {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(value || '');
+  const selected = value || '';
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleSelect = (option: string) => {
-    setSelected(option);
     setOpen(false);
     onChange?.(option);
   };
