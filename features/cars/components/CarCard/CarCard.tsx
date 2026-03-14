@@ -41,7 +41,7 @@ export default function CarCard({ car }: Props) {
             width={276}
             height={268}
             src={car.img}
-            alt={car.description}
+            alt={car.brand}
           />
         </Link>
       </div>

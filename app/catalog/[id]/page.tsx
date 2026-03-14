@@ -1,7 +1,5 @@
-export default function CarPage () {
-  return (
-    <div>
-      <h1>Car details</h1>
-    </div>
-  )
+import CarPageClient from '@/features/cars/components/CarPageClient/CarPageClient';
+
+export default function CarPage() {
+  return <CarPageClient />;
 }
