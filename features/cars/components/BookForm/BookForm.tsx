@@ -2,8 +2,11 @@
 
 import { useState } from 'react';
 
-import { toast } from 'sonner';
 import Button from '@/components/ui/Button/Button';
+import DatePicker from '@/components/ui/DatePicker/DatePicker';
+
+import { toast } from 'sonner';
+import 'react-day-picker/dist/style.css';
 
 export default function BookForm() {
   const [form, setForm] = useState({
@@ -12,6 +15,7 @@ export default function BookForm() {
     date: '',
     comment: '',
   });
+
   const [error, setError] = useState('');
 
   const handleChange = (
@@ -36,6 +40,7 @@ export default function BookForm() {
     setError('');
 
     toast.success('Car booked successfully!');
+
     setForm({
       name: '',
       email: '',
@@ -64,22 +69,26 @@ export default function BookForm() {
           placeholder="Name*"
           className="!text-[var(--gray)] text-left w-full max-w-full h-[48px] py-[14px] px-[20px] border border-transparent rounded-[12px] placeholder:text-[var(--gray)]"
         />
+
         <input
           value={form.email}
           onChange={handleChange}
           name="email"
-          type="text"
+          type="email"
           placeholder="Email*"
           className="!text-[var(--gray)] text-left w-full max-w-full h-[48px] py-[14px] px-[20px] border border-transparent rounded-[12px] placeholder:text-[var(--gray)]"
         />
-        <input
+
+        <DatePicker
           value={form.date}
-          onChange={handleChange}
-          name="date"
-          type="text"
-          placeholder="Booking date"
-          className="!text-[var(--gray)] text-left w-full max-w-full h-[48px] py-[14px] px-[20px] border border-transparent rounded-[12px] placeholder:text-[var(--gray)]"
+          onChange={(date) =>
+            setForm((prev) => ({
+              ...prev,
+              date,
+            }))
+          }
         />
+
         <textarea
           value={form.comment}
           onChange={handleChange}

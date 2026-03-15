@@ -126,4 +126,121 @@
     border-right: 8px solid transparent;
     background-clip: padding-box;
   }
+
+  .rdp-month {
+    padding: 16px;
+    width: 100%;
+    gap: 44px;
+  }
+
+  .rdp-root .rdp-day {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-weight: 500;
+  }
+
+  .rdp-root .rdp-cell {
+    padding: 2px;
+  }
+
+  .rdp-root .rdp-month_grid {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .rdp-table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .rdp-head_row {
+    border-bottom: 2px solid var(--button);
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+
+  .rdp-head_cell {
+    padding: 4px 0;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--gray);
+  }
+
+  .rdp-root .rdp-day:not(.rdp-outside) .rdp-day_button {
+    color: var(--main) !important;
+  }
+
+  .rdp-root .rdp-month .rdp-weekdays {
+    border-bottom: 1px solid var(--button);
+  }
+
+  .rdp-root .rdp-month .rdp-weekday {
+    padding: 0;
+    margin: 0;
+    font-family: var(--second-family);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 120%;
+    text-align: center;
+    color: var(--gray);
+  }
+
+  .rdp-day_button {
+    color: var(--white);
+    width: 36px;
+    height: 32px;
+  }
+
+  .rdp-root .rdp-day_button {
+    color: var(--white);
+    width: 36px;
+    height: 32px;
+  }
+
+  .rdp-root .rdp-month .rdp-day.rdp-selected {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    text-align: center;
+    color: var(--inputs);
+    border-radius: 32px;
+    width: 41px;
+    height: 32px;
+    background: var(--button);
+    color: white;
+    border: none;
+  }
+
+  .rdp-root .rdp-month .rdp-selected {
+    color: var(--white) !important;
+    font-weight: 400 !important;
+    width: 41px;
+    height: 32px;
+  }
+
+  .rdp-root .rdp-day.rdp-selected .rdp-day_button {
+    color: white !important;
+  }
+
+  .rdp-root .rdp-month .rdp-day.rdp-selected .rdp-day_button {
+    border: transparent !important;
+    width: 36px !important;
+    inline-size: 36px !important;
+    height: 32px !important;
+  }
+
+  .rdp-root .rdp-day.rdp-selected .rdp-day_button {
+    inline-size: 36px;
+    block-size: 32px;
+  }
+
+  .rdp-row {
+    justify-content: space-between;
+  }
+
+  .thead {
+    border-bottom: 1px solid var(--button);
+  }
 }
