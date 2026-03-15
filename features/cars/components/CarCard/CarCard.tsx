@@ -37,6 +37,7 @@ export default function CarCard({ car }: Props) {
           href={`/catalog/${car.id}`}
         >
           <Image
+            priority
             className="rounded-[14px] h-[268px] object-cover mb-[16px]"
             width={276}
             height={268}
