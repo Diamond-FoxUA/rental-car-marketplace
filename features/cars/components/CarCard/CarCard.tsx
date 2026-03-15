@@ -38,7 +38,7 @@ export default function CarCard({ car }: Props) {
         >
           <Image
             priority
-            className="rounded-[14px] h-[268px] object-cover mb-[16px]"
+            className="rounded-[14px] w-[276px] h-[268px] object-cover mb-[16px]"
             width={276}
             height={268}
             src={car.img}

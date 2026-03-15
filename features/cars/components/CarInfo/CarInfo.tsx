@@ -17,7 +17,7 @@ export default function CarInfo({ car }: Props) {
   const [imageLoading, setImageLoading] = useState(true);
 
   return (
-    <div className="py-[84px] px-[120px] grid grid-cols-1 lg:grid-cols-[640px_1fr] gap-12">
+    <div className="relative py-[84px] px-[120px] grid grid-cols-1 lg:grid-cols-[640px_1fr] gap-12">
       <div>
         {imageLoading && (
           <div className="absolute w-[640px] h-[512px] bg-[var(--gray-light)] rounded-[14px]">
