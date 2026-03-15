@@ -60,8 +60,8 @@ export default function CatalogClient() {
         )}
 
         {!loading && cars.length > 0 && page === totalPages && (
-          <div className="flex flex-col gap-4 justify-self-center mx-auto mb-[124px]">
-            <p className="">You&apos;ve reached the end.</p>
+          <div className="flex flex-col gap-4 justify-self-center mb-[124px]">
+            <p className="mx-auto">You&apos;ve reached the end.</p>
           </div>
         )}
 
