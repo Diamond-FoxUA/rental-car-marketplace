@@ -33,7 +33,7 @@ export default function CarCard({ car }: Props) {
         </button>
 
         <Link
-          className="cursor-pointer hover:scale-102"
+          className="cursor-pointer hover:scale-105"
           href={`/catalog/${car.id}`}
         >
           <Image
