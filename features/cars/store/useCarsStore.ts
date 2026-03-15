@@ -55,10 +55,12 @@ export const useCarsStore = create<CarsStore>()(
           page: 1,
           totalPages: 1,
           loading: false,
+          error: null,
+          hasFetched: false,
         }),
 
       setFilters: async (filters) => {
-        set({ filters, page: 1, cars: [] });
+        set({ filters, page: 1, cars: [], hasFetched: false });
         await get().fetchCars();
       },
 
