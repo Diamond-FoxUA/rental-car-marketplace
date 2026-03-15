@@ -25,12 +25,12 @@ export const metadata: Metadata = {
   keywords: ['car rental', 'rent a car', 'vehicle rental', 'car marketplace'],
   creator: 'Dmytro Farbun',
 
-  // metadataBase: new URL(""),
+  metadataBase: new URL('https://rental-car-marketplace.vercel.app/'),
 
   openGraph: {
     title: 'RentalCar Marketplace',
     description: 'Find your perfect rental car for any journey.',
-    // url: "",
+    url: 'https://rental-car-marketplace.vercel.app/',
     siteName: 'RentalCar',
     locale: 'en_US',
     type: 'website',
@@ -61,7 +61,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1 h-full">{children}</main>
 
-        <Toaster position='top-right' richColors />
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );

@@ -13,7 +13,7 @@ export default function Logo() {
       aria-label='Go to homepage'
     >
       <svg width={104} height={16}>
-        <use href="/icons/logo.svg" />
+        <use href="/icons/sprite.svg#icon-logo" />
       </svg>
     </Link>
   );
