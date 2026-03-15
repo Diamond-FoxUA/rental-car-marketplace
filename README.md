@@ -1,20 +1,15 @@
 # RentalCar Marketplace
 
-A frontend pet project built with Next.js, TypeScript, and Tailwind CSS.
-
-The application allows users to browse and rent cars using a provided backend
-API.  
-Users can filter vehicles, view detailed information, add cars to favorites, and
-submit a booking request.
+A frontend pet project built with Next.js, TypeScript, and Tailwind CSS that allows users to browse, filter, and rent cars using an external API.
 
 ## Features
 
 - Car catalog with filtering (brand, price, mileage)
-- Car details page
-- Favorites system with persistent storage
-- Pagination ("Load more")
-- Booking form
-- Clean responsive UI
+- Detailed car information page
+- Favorites system with persistent storage (localStorage)
+- Pagination with "Load More" functionality
+- Booking form with validation
+- Responsive UI built with Tailwind CSS
 
 ## Tech Stack
 
@@ -23,7 +18,7 @@ submit a booking request.
 - Tailwind CSS
 - Axios
 - Zustand
-- React Hook Form
+- Sonner
 
 ## API
 
@@ -31,9 +26,31 @@ This project uses the backend API provided by GoIT:
 
 https://car-rental-api.goit.global/
 
+## Installation
+
+1. Clone the repository
+
+git clone https://github.com/Diamond-FoxUA/rental-car-marketplace.git
+
+2. Navigate to the project folder
+
+cd rental-car-marketplace
+
+3. Install dependencies
+
+npm install
+
+4. Run the development server
+
+npm run dev
+
+5. Open in your browser
+
+http://localhost:3000
+
 ## Live Demo
 
-In progress
+Coming soon
 
 ## License
 
