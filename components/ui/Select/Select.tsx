@@ -65,7 +65,7 @@ export default function Select({
       <input type="hidden" name={name} value={selected || ''}></input>
 
       {open && (
-        <ul className="absolute flex flex-col gap-[8px] font-[500] w-[204px] max-h-[272px] bg-[var(--white)] pl-[18px] pr-[18px] mt-[4px]  pt-[14px] border border-[var(--inputs)] rounded-[12px] overflow-y-scroll overscroll-none z-50">
+        <ul className="absolute flex flex-col gap-[8px] font-[500] w-[204px] max-h-[272px] bg-[var(--white)] px-[18px] mt-[4px]  py-[14px] border border-[var(--inputs)] rounded-[12px] overflow-y-scroll overscroll-none z-50">
           {options.map((option) => (
             <li
               key={option}
