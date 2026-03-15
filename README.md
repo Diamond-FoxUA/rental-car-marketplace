@@ -50,7 +50,7 @@ http://localhost:3000
 
 ## Live Demo
 
-Coming soon
+https://rental-car-marketplace.vercel.app/
 
 ## License
 
