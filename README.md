@@ -2,6 +2,12 @@
 
 A frontend pet project built with Next.js, TypeScript, and Tailwind CSS that allows users to browse, filter, and rent cars using an external API.
 
+
+[Live Demo](https://rental-car-marketplace.vercel.app/)
+
+
+
+
 ## Features
 
 - Car catalog with filtering (brand, price, mileage)
@@ -47,10 +53,6 @@ npm run dev
 5. Open in your browser
 
 http://localhost:3000
-
-## Live Demo
-
-https://rental-car-marketplace.vercel.app/
 
 ## License
 
