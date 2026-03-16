@@ -45,7 +45,7 @@ export default function CarCard({ car }: Props) {
             className="rounded-[14px] w-[276px] h-[268px] object-cover mb-[16px]"
           />
 
-          <div className="absolute inset-0 rounded-[14px] bg-gradient-to-b from-black/20 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-0 rounded-[14px] bg-gradient-to-b from-black/30 to-transparent z-10 pointer-events-none" />
         </Link>
       </div>
       <div className="flex justify-between items-center">
