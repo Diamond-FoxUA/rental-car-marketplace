@@ -22,7 +22,7 @@ export default function CarCard({ car }: Props) {
       <div className="hover:scale-102 transition duration-300 ease-in-out">
         <button
           onClick={() => toggleFavourite(car.id)}
-          className="absolute top-[16px] right-[16px] text-xl hover:scale-110 transition duration-300 ease-in-out z-10"
+          className="absolute top-[16px] right-[16px] text-xl hover:scale-110 transition duration-300 ease-in-out z-20"
           type="button"
         >
           {isFavourite ? (
@@ -33,25 +33,29 @@ export default function CarCard({ car }: Props) {
         </button>
 
         <Link
-          className="relative cursor-pointer hover:scale-105"
           href={`/catalog/${car.id}`}
+          className="relative block w-[276px] h-[268px] mb-[16px]"
         >
           <Image
             priority
-            className="rounded-[14px] w-[276px] h-[268px] object-cover mb-[16px] "
-            width={276}
-            height={268}
             src={car.img}
             alt={car.brand}
+            width={276}
+            height={268}
+            className="rounded-[14px] w-[276px] h-[268px] object-cover mb-[16px]"
           />
-          <div className="absolute w-[272px] h-[150px] inset-0 top-[-283px] rounded-[14px] pointer-events-none bg-gradient-to-b from-black/60 to-transparent"></div>
+
+          <div className="absolute inset-0 rounded-[14px] bg-gradient-to-b from-black/20 to-transparent z-10 pointer-events-none" />
         </Link>
       </div>
       <div className="flex justify-between items-center">
         <h2 className="text-[16px] font-[500] leading-[125%]">
-          {car.brand} <span className='text-[var(--button)]'>{car.model}</span> {car.year}
+          {car.brand} <span className="text-[var(--button)]">{car.model}</span>{' '}
+          {car.year}
         </h2>
-        <p className="text-[var(--main)] font-[500] mr-[11px]">${car.rentalPrice}</p>
+        <p className="text-[var(--main)] font-[500] mr-[11px]">
+          ${car.rentalPrice}
+        </p>
       </div>
       <div className="mb-[28px]">
         <ul>
