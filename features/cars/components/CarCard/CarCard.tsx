@@ -22,7 +22,7 @@ export default function CarCard({ car }: Props) {
       <div className="hover:scale-102 transition duration-300 ease-in-out">
         <button
           onClick={() => toggleFavourite(car.id)}
-          className="absolute top-[16px] right-[16px] text-xl hover:scale-110 transition duration-300 ease-in-out"
+          className="absolute top-[16px] right-[16px] text-xl hover:scale-110 transition duration-300 ease-in-out z-10"
           type="button"
         >
           {isFavourite ? (
@@ -33,17 +33,18 @@ export default function CarCard({ car }: Props) {
         </button>
 
         <Link
-          className="cursor-pointer hover:scale-105"
+          className="relative cursor-pointer hover:scale-105"
           href={`/catalog/${car.id}`}
         >
           <Image
             priority
-            className="rounded-[14px] w-[276px] h-[268px] object-cover mb-[16px]"
+            className="rounded-[14px] w-[276px] h-[268px] object-cover mb-[16px] "
             width={276}
             height={268}
             src={car.img}
             alt={car.brand}
           />
+          <div className="absolute w-[272px] h-[150px] inset-0 top-[-283px] rounded-[14px] pointer-events-none bg-gradient-to-b from-black/60 to-transparent"></div>
         </Link>
       </div>
       <div className="flex justify-between items-center">
