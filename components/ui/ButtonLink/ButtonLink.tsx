@@ -27,7 +27,8 @@ export default function ButtonLink({ className, href, text }: ButtonLinkProps) {
                   ease-in-out
                   active:scale-95
                   disabled:opacity-50
-                  ${className}`}
+                  ${className ? className : ''}
+                `}
     >
       {text}
     </Link>
